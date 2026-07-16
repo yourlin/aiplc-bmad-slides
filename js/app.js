@@ -138,14 +138,30 @@ function renderSlide(slide, lang) {
   return stage;
 }
 
-function render() {
+// 给 slide 内可见子元素依次标记 stagger 序号，配合 CSS 做逐个入场
+function markStagger(slideNode) {
+  const groups = [".list__item", ".card", ".stage", ".pipe__step",
+    ".twocol__col", ".cover__kicker", ".cover__title", ".cover__subtitle",
+    ".cover__desc", ".cover__foot"];
+  const nodes = slideNode.querySelectorAll(groups.join(","));
+  nodes.forEach((n, i) => {
+    n.classList.add("stagger");
+    n.style.setProperty("--d", (i * 60) + "ms");
+  });
+}
+
+function render(dir) {
   const lang = state.lang;
   const ui = UI[lang];
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
 
   const stageWrap = document.getElementById("stage");
   stageWrap.innerHTML = "";
-  stageWrap.appendChild(renderSlide(SLIDES[state.idx], lang));
+  const slideNode = renderSlide(SLIDES[state.idx], lang);
+  // 方向感知转场：1=前进（从右入），-1=后退（从左入），0=原地（淡入）
+  slideNode.classList.add(dir === -1 ? "in-left" : dir === 1 ? "in-right" : "in-fade");
+  markStagger(slideNode);
+  stageWrap.appendChild(slideNode);
 
   document.getElementById("counter").textContent =
     state.idx + 1 + " " + ui.ofLabel + " " + SLIDES.length;
@@ -159,8 +175,10 @@ function render() {
 }
 
 function go(n) {
-  state.idx = Math.max(0, Math.min(SLIDES.length - 1, n));
-  render();
+  const target = Math.max(0, Math.min(SLIDES.length - 1, n));
+  const dir = target === state.idx ? 0 : target > state.idx ? 1 : -1;
+  state.idx = target;
+  render(dir);
 }
 
 function toggleLang() {
