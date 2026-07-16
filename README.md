@@ -2,6 +2,10 @@
 
 **AI-PLC（AI-driven Product Lifecycle）实战工作坊**的网页版幻灯片，纯静态、中英双语，用于 GitHub Pages 展示。与 AWS Workshop Studio 仓库 `aiplc-bmad-workshop` **相互独立**。
 
+## 在线访问
+
+👉 **<https://yourlin.github.io/aiplc-bmad-slides/>**
+
 ## 特性
 
 - **纯静态**，无构建步骤、无第三方框架依赖（不走 CDN，企业内网也能开）。
