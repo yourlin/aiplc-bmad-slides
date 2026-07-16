@@ -22,19 +22,34 @@ const icon = (name, cls) => {
   return `<svg class="${cls || "icon"}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
 };
 
-// 带图标的标题行
+// 带图标的标题行（有配图时，标题区右侧放一张圆角缩略图）
 function titleWithIcon(stage, d, slide) {
-  const head = el("div", "slide__head");
-  if (slide.icon) head.appendChild(el("span", "slide__icon", icon(slide.icon, "icon")));
-  head.appendChild(el("h2", "slide__title", esc(d.title)));
+  const head = el("div", "slide__head" + (slide.img ? " slide__head--img" : ""));
+  const left = el("div", "slide__head-l");
+  if (slide.icon) left.appendChild(el("span", "slide__icon", icon(slide.icon, "icon")));
+  left.appendChild(el("h2", "slide__title", esc(d.title)));
+  head.appendChild(left);
+  if (slide.img) {
+    const thumb = el("div", "slide__thumb");
+    thumb.style.backgroundImage = `url("${IMG_BASE}${slide.img}")`;
+    head.appendChild(thumb);
+  }
   stage.appendChild(head);
   if (d.subtitle) stage.appendChild(el("p", "slide__subtitle", esc(d.subtitle)));
 }
+
+const IMG_BASE = "assets/images/";
 
 function renderSlide(slide, lang) {
   const d = slide[lang];
   const ui = UI[lang];
   const stage = el("section", "slide slide--" + slide.type);
+  // 封面：图片作全屏背景 + 深色蒙层
+  if (slide.type === "cover" && slide.img) {
+    stage.classList.add("slide--bg");
+    stage.style.backgroundImage =
+      `linear-gradient(rgba(11,16,32,.72), rgba(11,16,32,.86)), url("${IMG_BASE}${slide.img}")`;
+  }
 
   switch (slide.type) {
     case "cover":

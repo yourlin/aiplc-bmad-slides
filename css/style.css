@@ -43,7 +43,13 @@ html, body {
 @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 .slide__head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.slide__head--img { justify-content: space-between; }
+.slide__head-l { display: flex; align-items: center; gap: 14px; min-width: 0; }
 .slide__title { font-size: clamp(26px, 3.6vw, 44px); font-weight: 800; letter-spacing: -.5px; }
+/* 内容页标题区的配图缩略图 */
+.slide__thumb { flex: none; width: clamp(120px, 22vw, 220px); height: clamp(72px, 12vw, 120px);
+  border-radius: 12px; background-size: cover; background-position: center;
+  border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
 .slide__subtitle { color: var(--muted); font-size: clamp(14px, 1.5vw, 19px); line-height: 1.5; margin-bottom: 28px; max-width: 62ch; }
 
 /* 图标 */
@@ -56,6 +62,11 @@ html, body {
 
 /* 封面 */
 .slide--cover { text-align: center; }
+/* 封面背景图：撑满舞台，蒙层已在 JS 内联到 background-image */
+.slide--bg { width: 100%; max-width: none; min-height: 100%;
+  background-size: cover; background-position: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  margin: calc(var(--pad) * -1); padding: var(--pad); border-radius: 0; }
 .cover__art { width: min(420px, 60%); margin: 0 auto 8px; }
 .cover__art svg { width: 100%; height: auto; }
 .cover__mark { color: var(--accent); margin-bottom: 8px; }

@@ -7,6 +7,7 @@ const SLIDES = [
   {
     type: "cover",
     art: true,
+    img: "cover.jpg",
     zh: {
       kicker: "AWS · AI-Native 产品创新方法论",
       title: "AI-PLC",
@@ -57,6 +58,7 @@ const SLIDES = [
   {
     type: "twocol",
     icon: "brain",
+    img: "skills.jpg",
     zh: {
       title: "AI 时代，产品经理需要什么新技能？",
       subtitle: "当 AI 能瞬间产出 PRD、原型与代码，PM 的价值从「产出」转向「判断、决策与验证」",
@@ -161,6 +163,7 @@ const SLIDES = [
   {
     type: "list",
     icon: "customer",
+    img: "customer.jpg",
     zh: {
       title: "Working Backwards：从客户出发，逆向工作",
       subtitle: "在写下第一行代码之前，先写好「新闻稿」。每篇 PR/FAQ 必须回答 5 个问题：",
@@ -291,6 +294,7 @@ const SLIDES = [
   {
     type: "grid",
     icon: "hotel",
+    img: "hotel.jpg",
     zh: {
       title: "实战场景：酒店 SaaS",
       subtitle: "覆盖「数据洞察 / 产品决策 / 文档生成」三类典型 PM 工作，客户可替换",
@@ -341,6 +345,7 @@ const SLIDES = [
   {
     type: "cover",
     art: false,
+    img: "rocket.jpg",
     zh: {
       kicker: "Building AI-Native Organization with AI-PLC & AI-DLC",
       title: "谢谢！",
