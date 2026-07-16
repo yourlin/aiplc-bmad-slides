@@ -15,6 +15,22 @@ const el = (tag, cls, html) => {
 // 转义，防止内容里的 < > 破坏结构
 const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 
+// 生成内联 SVG 图标（线性风格，由 CSS 用 currentColor 上色）
+const icon = (name, cls) => {
+  const body = ICONS[name];
+  if (!body) return "";
+  return `<svg class="${cls || "icon"}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+};
+
+// 带图标的标题行
+function titleWithIcon(stage, d, slide) {
+  const head = el("div", "slide__head");
+  if (slide.icon) head.appendChild(el("span", "slide__icon", icon(slide.icon, "icon")));
+  head.appendChild(el("h2", "slide__title", esc(d.title)));
+  stage.appendChild(head);
+  if (d.subtitle) stage.appendChild(el("p", "slide__subtitle", esc(d.subtitle)));
+}
+
 function renderSlide(slide, lang) {
   const d = slide[lang];
   const ui = UI[lang];
@@ -22,6 +38,8 @@ function renderSlide(slide, lang) {
 
   switch (slide.type) {
     case "cover":
+      if (slide.art) stage.appendChild(el("div", "cover__art", COVER_ART));
+      else stage.appendChild(el("div", "cover__mark", icon("rocket", "icon icon--xl")));
       stage.appendChild(el("p", "cover__kicker", esc(d.kicker)));
       stage.appendChild(el("h1", "cover__title", esc(d.title)));
       stage.appendChild(el("p", "cover__subtitle", esc(d.subtitle)));
@@ -30,8 +48,7 @@ function renderSlide(slide, lang) {
       break;
 
     case "list": {
-      stage.appendChild(el("h2", "slide__title", esc(d.title)));
-      stage.appendChild(el("p", "slide__subtitle", esc(d.subtitle)));
+      titleWithIcon(stage, d, slide);
       const ol = el("ol", "list");
       d.items.forEach(([h, s]) => {
         const li = el("li", "list__item");
@@ -44,8 +61,7 @@ function renderSlide(slide, lang) {
     }
 
     case "twocol": {
-      stage.appendChild(el("h2", "slide__title", esc(d.title)));
-      stage.appendChild(el("p", "slide__subtitle", esc(d.subtitle)));
+      titleWithIcon(stage, d, slide);
       const row = el("div", "twocol");
       [d.left, d.right].forEach((col, i) => {
         const c = el("div", "twocol__col twocol__col--" + (i === 0 ? "old" : "new"));
@@ -60,8 +76,7 @@ function renderSlide(slide, lang) {
     }
 
     case "grid": {
-      stage.appendChild(el("h2", "slide__title", esc(d.title)));
-      stage.appendChild(el("p", "slide__subtitle", esc(d.subtitle)));
+      titleWithIcon(stage, d, slide);
       const g = el("div", "grid grid--n" + d.cards.length);
       d.cards.forEach(([h, s]) => {
         const card = el("div", "card");
@@ -74,8 +89,7 @@ function renderSlide(slide, lang) {
     }
 
     case "stages": {
-      stage.appendChild(el("h2", "slide__title", esc(d.title)));
-      stage.appendChild(el("p", "slide__subtitle", esc(d.subtitle)));
+      titleWithIcon(stage, d, slide);
       const row = el("div", "stages");
       d.stages.forEach(([num, name, en, desc], i) => {
         const s = el("div", "stage");
@@ -91,8 +105,7 @@ function renderSlide(slide, lang) {
     }
 
     case "pipeline": {
-      stage.appendChild(el("h2", "slide__title", esc(d.title)));
-      stage.appendChild(el("p", "slide__subtitle", esc(d.subtitle)));
+      titleWithIcon(stage, d, slide);
       const row = el("div", "pipe");
       d.steps.forEach(([phase, goal, quick, skill], i) => {
         const s = el("div", "pipe__step");

@@ -6,6 +6,7 @@ const SLIDES = [
   // 1 · 封面
   {
     type: "cover",
+    art: true,
     zh: {
       kicker: "AWS · AI-Native 产品创新方法论",
       title: "AI-PLC",
@@ -25,6 +26,7 @@ const SLIDES = [
   // 2 · 议程
   {
     type: "list",
+    icon: "agenda",
     zh: {
       title: "工作坊大纲",
       subtitle: "今天我们将一起走完这 6 个话题",
@@ -54,6 +56,7 @@ const SLIDES = [
   // 3 · PM 新技能：角色迁移
   {
     type: "twocol",
+    icon: "brain",
     zh: {
       title: "AI 时代，产品经理需要什么新技能？",
       subtitle: "当 AI 能瞬间产出 PRD、原型与代码，PM 的价值从「产出」转向「判断、决策与验证」",
@@ -71,6 +74,7 @@ const SLIDES = [
   // 4 · 6 项新核心技能
   {
     type: "grid",
+    icon: "skills",
     zh: {
       title: "AI 时代 PM 的 6 项新增核心技能",
       subtitle: "「Writing evals is going to become a core skill for product managers.」— Kevin Weil, OpenAI CPO",
@@ -100,6 +104,7 @@ const SLIDES = [
   // 5 · AI-Native 组织四阶段
   {
     type: "stages",
+    icon: "org",
     zh: {
       title: "AI-Native 组织进化四阶段",
       subtitle: "从「个人提效」到「商业模式重构」——共同底座：SOP · AI-Native 平台 · Skills 资产 · 效率指标",
@@ -125,6 +130,7 @@ const SLIDES = [
   // 6 · AI-PLC 是什么 + 五大范式转变
   {
     type: "grid",
+    icon: "bulb",
     zh: {
       title: "AI-PLC 是什么？",
       subtitle: "一套面向产品经理与业务人员的 AI-Native 方法论——把模糊想法转化为可复用 Skills 或可运行原型。2026 年，AI 的本质变化不在模型能力，而在编排架构。",
@@ -154,6 +160,7 @@ const SLIDES = [
   // 7 · Working Backwards 5 问
   {
     type: "list",
+    icon: "customer",
     zh: {
       title: "Working Backwards：从客户出发，逆向工作",
       subtitle: "在写下第一行代码之前，先写好「新闻稿」。每篇 PR/FAQ 必须回答 5 个问题：",
@@ -181,6 +188,7 @@ const SLIDES = [
   // 8 · 核心流程四步映射
   {
     type: "pipeline",
+    icon: "pipeline",
     zh: {
       title: "AI-PLC 核心流程：四步映射",
       subtitle: "每个阶段由 Amazon Quick 内置能力 + BMAD Skill 组合驱动，贯穿全程的是验证测试闭环",
@@ -206,6 +214,7 @@ const SLIDES = [
   // 9 · 四阶段能力要点
   {
     type: "grid",
+    icon: "steps",
     zh: {
       title: "4 步，从模糊想法到专家系统",
       subtitle: "搞清背景 → 做清决策 → 排清顺序 → 做出来｜每一步都有验证测试兜底",
@@ -231,6 +240,7 @@ const SLIDES = [
   // 10 · AI-PLC vs AI-DLC 分层
   {
     type: "twocol",
+    icon: "layers",
     zh: {
       title: "AWS 三大工作坊：按人群分层",
       subtitle: "本工作坊聚焦 AI-PLC——帮助产品与业务人员用 AI-Native 思维设计「面向未来的 AI 产品」",
@@ -248,6 +258,7 @@ const SLIDES = [
   // 11 · BMAD 7 个 Skill
   {
     type: "grid",
+    icon: "puzzle",
     zh: {
       title: "落地：BMAD Skills Pack 的 7 个 Skill",
       subtitle: "移植到 Amazon Quick Desktop 专用的产品管理 & 创意思维技能包（v6.10.0）",
@@ -279,6 +290,7 @@ const SLIDES = [
   // 12 · 酒店 SaaS 场景
   {
     type: "grid",
+    icon: "hotel",
     zh: {
       title: "实战场景：酒店 SaaS",
       subtitle: "覆盖「数据洞察 / 产品决策 / 文档生成」三类典型 PM 工作，客户可替换",
@@ -304,6 +316,7 @@ const SLIDES = [
   // 13 · 工作坊收益
   {
     type: "grid",
+    icon: "gift",
     zh: {
       title: "工作坊收益",
       subtitle: "附加价值：团队 AI 思维转变——从「用 AI 做非 AI 产品」到「设计 AI 原生产品」",
@@ -327,6 +340,7 @@ const SLIDES = [
   // 14 · 结束页
   {
     type: "cover",
+    art: false,
     zh: {
       kicker: "Building AI-Native Organization with AI-PLC & AI-DLC",
       title: "谢谢！",

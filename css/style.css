@@ -42,11 +42,24 @@ html, body {
 .slide { width: min(1100px, 100%); max-height: 100%; overflow-y: auto; animation: fade .35s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
-.slide__title { font-size: clamp(26px, 3.6vw, 44px); font-weight: 800; letter-spacing: -.5px; margin-bottom: 12px; }
+.slide__head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.slide__title { font-size: clamp(26px, 3.6vw, 44px); font-weight: 800; letter-spacing: -.5px; }
 .slide__subtitle { color: var(--muted); font-size: clamp(14px, 1.5vw, 19px); line-height: 1.5; margin-bottom: 28px; max-width: 62ch; }
+
+/* 图标 */
+.icon { width: 24px; height: 24px; flex: none; }
+.slide__icon { display: inline-flex; align-items: center; justify-content: center;
+  width: clamp(38px, 4vw, 52px); height: clamp(38px, 4vw, 52px); border-radius: 12px; flex: none;
+  color: var(--accent); background: rgba(255,153,0,.12); border: 1px solid rgba(255,153,0,.3); }
+.slide__icon .icon { width: 58%; height: 58%; }
+.icon--xl { width: clamp(56px, 8vw, 92px); height: clamp(56px, 8vw, 92px); }
 
 /* 封面 */
 .slide--cover { text-align: center; }
+.cover__art { width: min(420px, 60%); margin: 0 auto 8px; }
+.cover__art svg { width: 100%; height: auto; }
+.cover__mark { color: var(--accent); margin-bottom: 8px; }
+.cover__mark .icon { margin: 0 auto; }
 .cover__kicker { color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: clamp(12px, 1.3vw, 15px); margin-bottom: 18px; }
 .cover__title { font-size: clamp(56px, 11vw, 140px); font-weight: 900; line-height: 1; letter-spacing: -3px;
   background: linear-gradient(120deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
