@@ -44,12 +44,8 @@ function renderSlide(slide, lang) {
   const d = slide[lang];
   const ui = UI[lang];
   const stage = el("section", "slide slide--" + slide.type);
-  // 封面：图片作全屏背景 + 深色蒙层
-  if (slide.type === "cover" && slide.img) {
-    stage.classList.add("slide--bg");
-    stage.style.backgroundImage =
-      `linear-gradient(rgba(11,16,32,.72), rgba(11,16,32,.86)), url("${IMG_BASE}${slide.img}")`;
-  }
+  // 封面带背景图时，给 slide 标记（背景铺到 #stage 容器，见 render()）
+  if (slide.type === "cover" && slide.img) stage.classList.add("slide--oncover");
 
   switch (slide.type) {
     case "cover":
@@ -157,7 +153,17 @@ function render(dir) {
 
   const stageWrap = document.getElementById("stage");
   stageWrap.innerHTML = "";
-  const slideNode = renderSlide(SLIDES[state.idx], lang);
+  const cur = SLIDES[state.idx];
+  // 封面背景图铺满整个舞台容器（含内边距区）；其它页清除背景
+  if (cur.type === "cover" && cur.img) {
+    stageWrap.classList.add("stage--bg");
+    stageWrap.style.backgroundImage =
+      `linear-gradient(rgba(11,16,32,.72), rgba(11,16,32,.86)), url("${IMG_BASE}${cur.img}")`;
+  } else {
+    stageWrap.classList.remove("stage--bg");
+    stageWrap.style.backgroundImage = "";
+  }
+  const slideNode = renderSlide(cur, lang);
   // 方向感知转场：1=前进（从右入），-1=后退（从左入），0=原地（淡入）
   slideNode.classList.add(dir === -1 ? "in-left" : dir === 1 ? "in-right" : "in-fade");
   markStagger(slideNode);

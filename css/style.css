@@ -78,11 +78,9 @@ html, body {
 
 /* 封面 */
 .slide--cover { text-align: center; }
-/* 封面背景图：撑满舞台，蒙层已在 JS 内联到 background-image */
-.slide--bg { width: 100%; max-width: none; min-height: 100%;
-  background-size: cover; background-position: center;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  margin: calc(var(--pad) * -1); padding: var(--pad); border-radius: 0; }
+/* 封面背景图：铺满整个舞台容器（含内边距区），蒙层已在 JS 内联到 background-image */
+#stage.stage--bg { background-size: cover; background-position: center; background-repeat: no-repeat; }
+.slide--oncover { width: 100%; max-width: none; }
 .cover__art { width: min(420px, 60%); margin: 0 auto 8px; }
 .cover__art svg { width: 100%; height: auto; }
 .cover__mark { color: var(--accent); margin-bottom: 8px; }
