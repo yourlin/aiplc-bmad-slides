@@ -327,7 +327,33 @@ const SLIDES = [
     },
   },
 
-  // 13 · 工作坊收益
+  // 13 · 动手操作步骤：每阶段在 Quick 里怎么做
+  {
+    type: "pipeline",
+    icon: "steps",
+    zh: {
+      title: "动手怎么做：每步在 Quick 里的操作",
+      subtitle: "选定行业后，把每步指令直接粘到 Amazon Quick Desktop 对话框；先输触发词进入对应 Skill，再贴具体任务",
+      steps: [
+        ["① Discovery", "并行调研 + 竞品梳理", "DeepResearch 发起并行调研", "Talk to Mary 出竞品矩阵与机会"],
+        ["② Ideation", "逼出决策 + 压测方案", "Help me brainstorm 收敛决策", "Create a PRFAQ 用 5 问压测"],
+        ["③ Prototype", "概要 + 完整 PRD", "Create a product brief 出一页纸", "Write a PRD 补流程与页面结构"],
+        ["④ Validate", "产出 + 审查闭环", "Execute 调度产出 Skill / 原型", "Validate my PRD 审查并修复"],
+      ],
+    },
+    en: {
+      title: "How to do it: the operation in Quick per step",
+      subtitle: "After picking an industry, paste each instruction into Amazon Quick Desktop; enter the Skill with its trigger, then paste the task",
+      steps: [
+        ["① Discovery", "Parallel research + competitor scan", "DeepResearch launches parallel research", "Talk to Mary for a competitor matrix & gaps"],
+        ["② Ideation", "Force decisions + stress-test", "Help me brainstorm to converge", "Create a PRFAQ to stress-test with 5 Qs"],
+        ["③ Prototype", "Brief + full PRD", "Create a product brief (one-pager)", "Write a PRD with flow & page structure"],
+        ["④ Validate", "Build + review loop", "Execute dispatches to build Skill / prototype", "Validate my PRD to review and fix"],
+      ],
+    },
+  },
+
+  // 14 · 工作坊收益
   {
     type: "grid",
     icon: "gift",
@@ -351,7 +377,7 @@ const SLIDES = [
     },
   },
 
-  // 14 · 结束页
+  // 15 · 结束页
   {
     type: "cover",
     art: false,
