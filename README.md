@@ -51,3 +51,7 @@ aiplc-bmad-slides/
 3. `.github/workflows/deploy.yml` 会自动把根目录发布，产出形如 `https://<org>.github.io/aiplc-bmad-slides/` 的地址。
 
 > 内容与 AWS Workshop Studio / 指导手册保持一致：方法论有实质更新时，同步更新 `js/slides.js`。
+
+## License
+
+[MIT](./LICENSE) © 2026 Lin Ye
